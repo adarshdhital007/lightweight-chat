@@ -1,0 +1,84 @@
+<div class="container-fluid vh-100 startcontainer">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="overall_wrapper d-flex flex-column">
+      <p class="card-title text-black text-center mb-2 fs-5">
+        Socket Chat Angular
+      </p>
+      <div *ngIf="!hasUsername">
+        <!-- Username input form -->
+        <div class="form-group">
+          <input
+            [(ngModel)]="usernameInput"
+            class="form-control"
+            placeholder="Enter your username"
+            (keyup.enter)="setUsername()"
+          />
+        </div>
+        <button (click)="setUsername()" class="btn btn-primary btn-block">
+          Set Username
+        </button>
+        <div *ngIf="!usernameSet" class="text-danger mt-2">
+          Username is not unique. Please choose another username.
+        </div>
+      </div>
+      <div *ngIf="hasUsername">
+        <!-- Chat messages container -->
+        <div class="chat-messages">
+          <div
+            class="welcome-message text-black d-flex justify-content-center align-items-center"
+            style="font-size: 24px"
+          >
+            Welcome to the chat!
+          </div>
+          <p class="text-black text-center">Start by sending messages...</p>
+          <div *ngFor="let msg of messages; let i = index" class="chat-message">
+            <div
+              class="message"
+              [ngClass]="{
+                'message-left': isMessageFromCurrentUser(msg),
+                'message-right': !isMessageFromCurrentUser(msg)
+              }"
+            >
+              <div>
+                <span class="username text-primary fw-bold"
+                  >{{ msg.username }} :
+                </span>
+                <span style="font-size: 17px" class="text-black"
+                  >{{ msg.text }}
+                  <button
+                    *ngIf="isMessageEditable(msg)"
+                    class="btn btn-link text-danger btn-sm delete-button"
+                    (click)="deleteMessage(msg.id, msg.userId)"
+                  >
+                    Delete
+                  </button></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message input form -->
+        <div class="input-container">
+          <div class="input-group">
+            <input
+              [(ngModel)]="message"
+              (keyup.enter)="sendMessage()"
+              class="form-control input-box"
+              placeholder="Type a message"
+            />
+            <div class="input-group-append">
+              <button
+                (click)="sendMessage()"
+                class="btn-rounded btn-small bg-primary text-white btn-primary"
+                [disabled]="message.length === 0"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

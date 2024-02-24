@@ -1,0 +1,73 @@
+.startcontainer {
+  background-color: aliceblue;
+}
+
+.overall_wrapper{
+    max-width: 600px;
+}
+
+.message-left {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 15px 15px 15px 0;
+  margin: 10px;
+  max-width: 50%;
+  align-self: flex-start;
+  word-wrap: break-word;
+}
+
+.message-right {
+  background-color: #b9b9b9;
+  color: #fff;
+  padding: 10px;
+  border-radius: 15px 15px 0 15px;
+  margin: 10px;
+  max-width: 50%;
+  align-self: flex-end;
+  word-wrap: break-word;
+}
+
+.chat-message {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.chat-messages {
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+
+.message-actions {
+  margin-top: 5px;
+  text-align: right;
+}
+
+.welcome-message {
+  background-color: #d8edfb;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+.message .delete-button {
+  margin: 0;
+  text-align: right;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-box {
+  border-radius: 15px 0 0 15px;
+}
+
+.btn-rounded {
+  border-radius: 0 15px 15px 0;
+}
+
+.btn-primary:disabled {
+  background-color: grey !important;
+  cursor: not-allowed;
+}
